@@ -13,6 +13,8 @@
     <div class="map-title-wrap"><span class="eyebrow">SEU ESPAÇO DE IDEIAS</span><input id="mapTitle" class="map-title" value="Meu mapa mental" aria-label="Nome do mapa"></div>
     <div class="top-actions">
       <span id="saveStatus" class="save-status"><span class="status-dot"></span> Salvo neste dispositivo</span>
+      <button id="newMapBtn" class="button button-light" type="button">+ Novo mapa</button>
+      <button id="mapsBtn" class="button button-light" type="button">Meus mapas</button>
       <button id="exportBtn" class="button button-light" type="button">Exportar</button>
       <button id="importBtn" class="button button-primary" type="button">Abrir mapa</button>
       <input id="importFile" type="file" accept="application/json,.json" hidden>
@@ -21,6 +23,9 @@
   <main class="workspace">
     <aside class="sidebar">
       <div class="sidebar-heading"><span class="sidebar-icon">✳</span><div><strong>Mapa mental</strong><small>Rascunho pessoal</small></div></div>
+      <div class="side-divider"></div>
+      <button id="sidebarMapsBtn" class="side-action" type="button"><span class="action-symbol">▤</span> Meus mapas</button>
+      <button id="sidebarNewMapBtn" class="side-action" type="button"><span class="action-symbol">＋</span> Novo mapa mental</button>
       <div class="side-divider"></div>
       <p class="section-label">AÇÕES</p>
       <button id="addChildBtn" class="side-action" type="button"><span class="action-symbol">＋</span> Adicionar ideia filha <kbd>Tab</kbd></button>
@@ -48,12 +53,18 @@
           <svg id="connections" class="connections" aria-hidden="true"></svg>
           <div id="nodesLayer" class="nodes-layer"></div>
         </div>
-        <div class="canvas-hint"><span class="hint-dot"></span> Duplo clique em uma ideia para editar · Arraste o fundo para navegar</div>
+        <div class="canvas-hint"><span class="hint-dot"></span> Edite o texto direto no quadro · Arraste um quadro sobre outro para conectar · Arraste o fundo para navegar</div>
         <div class="empty-help" id="emptyHelp"><span>✳</span><strong>Seu mapa começa com uma ideia</strong><p>Selecione um nó e use <kbd>Tab</kbd> para adicionar uma ideia conectada.</p></div>
       </div>
       <footer class="editor-footer"><span><span class="footer-check">✓</span> Salvamento automático local</span><span id="nodeCount">1 ideia</span></footer>
     </section>
   </main>
+  <dialog id="mapsDialog" class="help-dialog maps-dialog">
+    <div class="dialog-head"><div><span class="eyebrow">SUA BIBLIOTECA</span><h2>Meus mapas mentais</h2></div><button id="closeMaps" class="icon-button" aria-label="Fechar mapas">×</button></div>
+    <p>Crie mapas separados e volte a qualquer um deles quando quiser. Os mapas ficam salvos neste navegador.</p>
+    <div id="mapsList" class="maps-list"></div>
+    <button id="createMapFromList" class="button button-primary dialog-cta" type="button">+ Criar novo mapa</button>
+  </dialog>
   <dialog id="helpDialog" class="help-dialog">
     <div class="dialog-head"><div><span class="eyebrow">GUIA RÁPIDO</span><h2>Crie seu mapa mental</h2></div><button id="closeHelp" class="icon-button" aria-label="Fechar ajuda">×</button></div>
     <p>Selecione uma ideia para trabalhar nela. Seu mapa é salvo automaticamente neste navegador.</p>
