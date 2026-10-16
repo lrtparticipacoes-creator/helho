@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Ideia — Mapa Mental</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Ideia, início"><span class="brand-mark">✳</span><span>ideia</span></a>
+    <div class="map-title-wrap"><span class="eyebrow">SEU ESPAÇO DE IDEIAS</span><input id="mapTitle" class="map-title" value="Meu mapa mental" aria-label="Nome do mapa"></div>
+    <div class="top-actions">
+      <span id="saveStatus" class="save-status"><span class="status-dot"></span> Salvo neste dispositivo</span>
+      <button id="exportBtn" class="button button-light" type="button">Exportar</button>
+      <button id="importBtn" class="button button-primary" type="button">Abrir mapa</button>
+      <input id="importFile" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar">
+      <div class="sidebar-heading"><span class="sidebar-icon">✳</span><div><strong>Mapa mental</strong><small>Rascunho pessoal</small></div></div>
+      <div class="side-divider"></div>
+      <p class="section-label">AÇÕES</p>
+      <button id="addChildBtn" class="side-action" type="button"><span class="action-symbol">＋</span> Adicionar ideia filha <kbd>Tab</kbd></button>
+      <button id="addSiblingBtn" class="side-action" type="button"><span class="action-symbol">↳</span> Adicionar ideia irmã <kbd>Enter</kbd></button>
+      <button id="renameBtn" class="side-action" type="button"><span class="action-symbol">✎</span> Renomear ideia</button>
+      <button id="deleteBtn" class="side-action danger" type="button"><span class="action-symbol">−</span> Excluir ideia <kbd>Del</kbd></button>
+      <div class="side-divider"></div>
+      <div class="tip-card"><span class="tip-icon">✦</span><strong>Uma ideia puxa a outra.</strong><p>Comece pelo centro e vá conectando pensamentos. Não precisa ficar perfeito de primeira.</p></div>
+      <div class="sidebar-footer"><span class="offline-icon">●</span> Funciona sem conta e sem internet</div>
+    </aside>
+    <section class="editor">
+      <div class="canvas-toolbar">
+        <div class="breadcrumbs"><span>Meus mapas</span><span class="crumb-slash">/</span><strong id="breadcrumbTitle">Meu mapa mental</strong></div>
+        <div class="canvas-actions">
+          <button id="helpBtn" class="icon-button" type="button" aria-label="Ajuda" title="Atalhos de teclado">?</button>
+          <span class="toolbar-divider"></span>
+          <button id="zoomOut" class="icon-button" type="button" aria-label="Diminuir zoom">−</button>
+          <span id="zoomLabel" class="zoom-label">100%</span>
+          <button id="zoomIn" class="icon-button" type="button" aria-label="Aumentar zoom">＋</button>
+          <button id="centerBtn" class="icon-button" type="button" aria-label="Centralizar mapa" title="Centralizar mapa">◎</button>
+        </div>
+      </div>
+      <div id="canvasViewport" class="canvas-viewport">
+        <div id="canvasWorld" class="canvas-world">
+          <svg id="connections" class="connections" aria-hidden="true"></svg>
+          <div id="nodesLayer" class="nodes-layer"></div>
+        </div>
+        <div class="canvas-hint"><span class="hint-dot"></span> Duplo clique em uma ideia para editar · Arraste o fundo para navegar</div>
+        <div class="empty-help" id="emptyHelp"><span>✳</span><strong>Seu mapa começa com uma ideia</strong><p>Selecione um nó e use <kbd>Tab</kbd> para adicionar uma ideia conectada.</p></div>
+      </div>
+      <footer class="editor-footer"><span><span class="footer-check">✓</span> Salvamento automático local</span><span id="nodeCount">1 ideia</span></footer>
+    </section>
+  </main>
+  <dialog id="helpDialog" class="help-dialog">
+    <div class="dialog-head"><div><span class="eyebrow">GUIA RÁPIDO</span><h2>Crie seu mapa mental</h2></div><button id="closeHelp" class="icon-button" aria-label="Fechar ajuda">×</button></div>
+    <p>Selecione uma ideia para trabalhar nela. Seu mapa é salvo automaticamente neste navegador.</p>
+    <div class="shortcut-row"><span>Nova ideia filha</span><kbd>Tab</kbd></div>
+    <div class="shortcut-row"><span>Nova ideia irmã</span><kbd>Enter</kbd></div>
+    <div class="shortcut-row"><span>Renomear ideia</span><kbd>Duplo clique</kbd></div>
+    <div class="shortcut-row"><span>Excluir ideia</span><kbd>Delete</kbd></div>
+    <div class="shortcut-row"><span>Navegar pelo mapa</span><kbd>Arraste o fundo</kbd></div>
+    <button id="gotIt" class="button button-primary dialog-cta" type="button">Entendi</button>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
